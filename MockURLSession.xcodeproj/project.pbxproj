@@ -13,7 +13,7 @@
 		850353541C6EBFC20081657F /* MockURLSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85915BBB1C6EBAAE00216861 /* MockURLSession.framework */; };
 		850353591C6EC0010081657F /* NSURLSession+Swizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 850353571C6EC0010081657F /* NSURLSession+Swizzling.h */; };
 		8503535A1C6EC0010081657F /* NSURLSession+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 850353581C6EC0010081657F /* NSURLSession+Swizzling.m */; };
-		850353601C6ED9070081657F /* MockURLSessionResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503535F1C6ED9070081657F /* MockURLSessionResponses.swift */; };
+		850353601C6ED9070081657F /* MockResponseValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503535F1C6ED9070081657F /* MockResponseValues.swift */; };
 		85915BBF1C6EBAAE00216861 /* MockURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 85915BBE1C6EBAAE00216861 /* MockURLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		85915BC61C6EBAAE00216861 /* MockURLSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85915BBB1C6EBAAE00216861 /* MockURLSession.framework */; };
 		85915BCB1C6EBAAE00216861 /* MockURLSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85915BCA1C6EBAAE00216861 /* MockURLSessionTests.swift */; };
@@ -23,6 +23,7 @@
 		85915BE31C6EBAD200216861 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85915BE21C6EBAD200216861 /* Assets.xcassets */; };
 		85915BE61C6EBAD200216861 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85915BE41C6EBAD200216861 /* LaunchScreen.storyboard */; };
 		85915BFA1C6EBB7D00216861 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85915BF91C6EBB7D00216861 /* NetworkModel.swift */; };
+		85D294AE1C6F235A0002B48A /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D294AD1C6F235A0002B48A /* MockURLSession.swift */; };
 		B2C725D022B6294B5DFF993F /* Pods_MockURLSessionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D224AE09A9CB81E6D0CAF58 /* Pods_MockURLSessionTests.framework */; };
 		E4B3C787FAE5F2B0E1BC13B4 /* Pods_MockURLSession.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBE3D4D41D813D41AD4B993 /* Pods_MockURLSession.framework */; };
 /* End PBXBuildFile section */
@@ -61,7 +62,7 @@
 		850353521C6EBE860081657F /* TestAppSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAppSpec.swift; sourceTree = "<group>"; };
 		850353571C6EC0010081657F /* NSURLSession+Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+Swizzling.h"; sourceTree = "<group>"; };
 		850353581C6EC0010081657F /* NSURLSession+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+Swizzling.m"; sourceTree = "<group>"; };
-		8503535F1C6ED9070081657F /* MockURLSessionResponses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSessionResponses.swift; sourceTree = "<group>"; };
+		8503535F1C6ED9070081657F /* MockResponseValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockResponseValues.swift; sourceTree = "<group>"; };
 		85915BBB1C6EBAAE00216861 /* MockURLSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MockURLSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85915BBE1C6EBAAE00216861 /* MockURLSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MockURLSession.h; sourceTree = "<group>"; };
 		85915BC01C6EBAAE00216861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		85915BEC1C6EBAD200216861 /* TestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85915BF21C6EBAD200216861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85915BF91C6EBB7D00216861 /* NetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		85D294AD1C6F235A0002B48A /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		9CBE3D4D41D813D41AD4B993 /* Pods_MockURLSession.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MockURLSession.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0BD458B7B75208CC1EC34CB /* Pods-MockURLSessionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MockURLSessionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MockURLSessionTests/Pods-MockURLSessionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B411231BFBF0C1757D2256B2 /* Pods-TestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestAppTests/Pods-TestAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,11 +179,12 @@
 		85915BBD1C6EBAAE00216861 /* MockURLSession */ = {
 			isa = PBXGroup;
 			children = (
-				85915BBE1C6EBAAE00216861 /* MockURLSession.h */,
-				85915BC01C6EBAAE00216861 /* Info.plist */,
+				85D294AD1C6F235A0002B48A /* MockURLSession.swift */,
+				8503535F1C6ED9070081657F /* MockResponseValues.swift */,
 				850353571C6EC0010081657F /* NSURLSession+Swizzling.h */,
 				850353581C6EC0010081657F /* NSURLSession+Swizzling.m */,
-				8503535F1C6ED9070081657F /* MockURLSessionResponses.swift */,
+				85915BBE1C6EBAAE00216861 /* MockURLSession.h */,
+				85915BC01C6EBAAE00216861 /* Info.plist */,
 			);
 			path = MockURLSession;
 			sourceTree = "<group>";
@@ -569,8 +572,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D294AE1C6F235A0002B48A /* MockURLSession.swift in Sources */,
 				8503535A1C6EC0010081657F /* NSURLSession+Swizzling.m in Sources */,
-				850353601C6ED9070081657F /* MockURLSessionResponses.swift in Sources */,
+				850353601C6ED9070081657F /* MockResponseValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
