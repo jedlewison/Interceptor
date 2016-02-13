@@ -17,7 +17,6 @@ public protocol MockURLSessionResponding: class {
     /// This is your opportunity to finalize the response, providing custom data, headers, status code, etc.
     /// You do this by setting `MockResponseValues` properties. `MockURLSession` will then use these values to
     /// generate the appropriate NSURLResponse and NSData.
-
     func finalizeMockResponseValuesForRequest(initialValues: MockResponseValues)
 }
 
