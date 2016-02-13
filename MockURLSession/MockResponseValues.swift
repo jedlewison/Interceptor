@@ -8,11 +8,12 @@
 
 import Foundation
 
-/// `MockResponseValues` is a mutable object encapsulating the values necessary to construct a mock URL response for unit tests.
+/// `MockResponseValues` is a mutable object encapsulating the values necessary to construct a
+/// mock URL response for unit tests.
 ///
-/// You don't create a `MockResponseValues` directly. Instead, you receive one as a dataSource for a `MockURLSession` when it needs to provide a mock response to an `NSURLRequest`.
+/// You don't create a `MockResponseValues` directly. Instead, you receive one as a dataSource for a
+/// `MockURLSession` when it needs to provide a mock response to an `NSURLRequest`.
 ///
-
 public class MockResponseValues: NSObject {
 
     public let request: NSURLRequest
@@ -42,7 +43,7 @@ public extension MockResponseValues {
         self.data = data
     }
 
-    /// Set mock response's data to a data representation of the string encoded using ```NSUTF8StringEncoding``` encoding
+    /// Set mock response's data to a data representation of the string encoded using `NSUTF8StringEncoding` encoding
     @objc(setDataWithString:)
     public func setData(withString string: String) {
         setData(withString: string, encoding: NSUTF8StringEncoding)

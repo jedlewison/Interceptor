@@ -37,6 +37,7 @@
 }
 
 + (void)load {
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 
@@ -53,49 +54,62 @@
                                   withSelector:@selector(mush_dataTaskWithURL:completionHandler:)];
 
     });
+    
 }
 
 #pragma mark - Method Swizzling
 
 - (NSURLSessionDataTask *)mush_dataTaskWithRequest:(NSURLRequest *)request {
+
     request = [self mush_makeRequestCacheOnly:request];
     NSURLSessionDataTask *dataTask = [self mush_dataTaskWithRequest:request];
     [self mush_getCachedResponseForDataTask:dataTask];
     return dataTask;
+
 }
 
-- (NSURLSessionDataTask *)mush_dataTaskWithRequest:(NSURLRequest *)request completionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+- (NSURLSessionDataTask *)mush_dataTaskWithRequest:(NSURLRequest *)request
+                                 completionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
 
     NSURLSessionDataTask *dataTask = [self mush_dataTaskWithRequest:[self mush_makeRequestCacheOnly:request]
-                                                  completionHandler:completionHandler];\
+                                                  completionHandler:completionHandler];
     [self mush_getCachedResponseForDataTask:dataTask];
     return dataTask;
+
 }
 
 - (NSURLSessionDataTask *)mush_dataTaskWithURL:(NSURL *)url {
+
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                              cachePolicy:NSURLRequestReturnCacheDataDontLoad
                                          timeoutInterval:0];
     return [self dataTaskWithRequest:request];
+
 }
 
-- (NSURLSessionDataTask *)mush_dataTaskWithURL:(NSURL *)url completionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+- (NSURLSessionDataTask *)mush_dataTaskWithURL:(NSURL *)url
+                             completionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                              cachePolicy:NSURLRequestReturnCacheDataDontLoad
                                          timeoutInterval:0];
     return [self dataTaskWithRequest:request
                    completionHandler:completionHandler];
+
 }
 
 #pragma mark - Mock requests
 
 - (void)mush_getCachedResponseForDataTask:(NSURLSessionDataTask *)dataTask {
+
     NSCachedURLResponse *generatedCachedResponse = [[MockURLSession sharedInstance] cachedResponseForDataTask:dataTask];
     [self.configuration.URLCache storeCachedResponse:generatedCachedResponse forDataTask:dataTask];
     [self.configuration.URLCache storeCachedResponse:generatedCachedResponse forRequest:dataTask.originalRequest];
+
 }
 
 - (NSURLRequest *)mush_makeRequestCacheOnly:(NSURLRequest *)request {
+
     [self.configuration setRequestCachePolicy:NSURLRequestReturnCacheDataDontLoad];
     if (request.cachePolicy == NSURLRequestReturnCacheDataDontLoad && request.timeoutInterval == 0) {
         return request;
@@ -107,6 +121,7 @@
         [(NSMutableURLRequest *)request setCachePolicy:NSURLRequestReturnCacheDataDontLoad];
         return request;
     }
+
 }
 
 @end
