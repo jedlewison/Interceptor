@@ -61,7 +61,7 @@
 
 - (NSURLSessionDataTask *)mush_dataTaskWithRequest:(NSURLRequest *)request {
     NSURLSessionDataTask *dataTask = [self mush_dataTaskWithRequest:[self mush_makeRequestCacheOnly:request]];
-    [self mush_getCachedResponseForDataTask:dataTask];
+    [self mush_storeCachedResponseForDataTask:dataTask];
     return dataTask;
 }
 
@@ -69,7 +69,7 @@
                                  completionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
     NSURLSessionDataTask *dataTask = [self mush_dataTaskWithRequest:[self mush_makeRequestCacheOnly:request]
                                                   completionHandler:completionHandler];
-    [self mush_getCachedResponseForDataTask:dataTask];
+    [self mush_storeCachedResponseForDataTask:dataTask];
     return dataTask;
 }
 
@@ -91,7 +91,7 @@
 
 #pragma mark - Mock requests
 
-- (void)mush_getCachedResponseForDataTask:(NSURLSessionDataTask *)dataTask {
+- (void)mush_storeCachedResponseForDataTask:(NSURLSessionDataTask *)dataTask {
     NSCachedURLResponse *generatedCachedResponse = [[MockURLSession sharedInstance] cachedResponseForDataTask:dataTask];
     [self.configuration.URLCache storeCachedResponse:generatedCachedResponse forDataTask:dataTask];
     [self.configuration.URLCache storeCachedResponse:generatedCachedResponse forRequest:dataTask.originalRequest];
