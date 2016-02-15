@@ -1,6 +1,6 @@
 //
-//  MockURLSession.swift
-//  MockURLSession
+//  Interceptor.swift
+//  Interceptor
 //
 //  Created by Jed Lewison on 2/12/16.
 //  Copyright © 2016 Magic App Factory. All rights reserved.
@@ -12,7 +12,7 @@ import Foundation
 /// mock URL response for unit tests.
 ///
 /// You don't create a `MockResponseValues` directly. Instead, you receive one as a dataSource for a
-/// `MockURLSession` when it needs to provide a mock response to an `NSURLRequest`.
+/// `Interceptor` when it needs to provide a mock response to an `NSURLRequest`.
 ///
 public class MockResponseValues: NSObject {
 

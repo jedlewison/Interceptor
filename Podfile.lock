@@ -1,18 +1,25 @@
 PODS:
   - Alamofire (3.2.0)
+  - Interceptor (0.0.1)
   - Nimble (3.1.0)
   - Quick (0.9.1)
 
 DEPENDENCIES:
   - Alamofire
+  - Interceptor (from `.`)
   - Nimble
   - Quick
 
+EXTERNAL SOURCES:
+  Interceptor:
+    :path: "."
+
 SPEC CHECKSUMS:
   Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
+  Interceptor: 9bdced1d4a896941988de4f5be3609047030cb2a
   Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
 
-PODFILE CHECKSUM: 1be4c69ecc6377aab74d5533762c3275392d7171
+PODFILE CHECKSUM: 299f402bf47de4a2d31dc577f4f0a0d954efe65d
 
 COCOAPODS: 1.0.0.beta.3

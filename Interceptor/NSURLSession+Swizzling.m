@@ -1,13 +1,13 @@
 //
 //  NSURLSession+Swizzling.m
-//  MockURLSession
+//  Interceptor
 //
 //  Created by Jed Lewison on 2/12/16.
 //  Copyright © 2016 Magic App Factory. All rights reserved.
 //
 
 #import "NSURLSession+Swizzling.h"
-#import <MockURLSession/MockURLSession-Swift.h>
+#import <Interceptor/Interceptor-Swift.h>
 @import ObjectiveC;
 
 @implementation NSURLSession (Swizzling)
@@ -60,6 +60,9 @@
 #pragma mark - Method Swizzling
 
 - (NSURLSessionDataTask *)mush_dataTaskWithRequest:(NSURLRequest *)request {
+    if (![InterceptorSession sharedInstance].active) {
+        return [self mush_dataTaskWithRequest:request];
+    }
     NSURLSessionDataTask *dataTask = [self mush_dataTaskWithRequest:[self mush_makeRequestCacheOnly:request]];
     [self mush_storeCachedResponseForDataTask:dataTask];
     return dataTask;
@@ -67,6 +70,9 @@
 
 - (NSURLSessionDataTask *)mush_dataTaskWithRequest:(NSURLRequest *)request
                                  completionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+    if (![InterceptorSession sharedInstance].active) {
+        return [self mush_dataTaskWithRequest:request completionHandler:completionHandler];
+    }
     NSURLSessionDataTask *dataTask = [self mush_dataTaskWithRequest:[self mush_makeRequestCacheOnly:request]
                                                   completionHandler:completionHandler];
     [self mush_storeCachedResponseForDataTask:dataTask];
@@ -74,6 +80,9 @@
 }
 
 - (NSURLSessionDataTask *)mush_dataTaskWithURL:(NSURL *)url {
+    if (![InterceptorSession sharedInstance].active) {
+        return [self mush_dataTaskWithURL:url];
+    }
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                              cachePolicy:NSURLRequestReturnCacheDataDontLoad
                                          timeoutInterval:0];
@@ -82,6 +91,9 @@
 
 - (NSURLSessionDataTask *)mush_dataTaskWithURL:(NSURL *)url
                              completionHandler:(void (^)(NSData * _Nullable, NSURLResponse * _Nullable, NSError * _Nullable))completionHandler {
+    if (![InterceptorSession sharedInstance].active) {
+        return [self mush_dataTaskWithURL:url completionHandler:completionHandler];
+    }
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                              cachePolicy:NSURLRequestReturnCacheDataDontLoad
                                          timeoutInterval:0];
@@ -92,7 +104,10 @@
 #pragma mark - Mock requests
 
 - (void)mush_storeCachedResponseForDataTask:(NSURLSessionDataTask *)dataTask {
-    NSCachedURLResponse *generatedCachedResponse = [[MockURLSession sharedInstance] cachedResponseForDataTask:dataTask];
+    if (![InterceptorSession sharedInstance].active) {
+        return;
+    }
+    NSCachedURLResponse *generatedCachedResponse = [[InterceptorSession sharedInstance] cachedResponseForDataTask:dataTask];
     [self.configuration.URLCache storeCachedResponse:generatedCachedResponse forDataTask:dataTask];
     [self.configuration.URLCache storeCachedResponse:generatedCachedResponse forRequest:dataTask.originalRequest];
 }

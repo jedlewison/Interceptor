@@ -1,13 +1,13 @@
 import Quick
 import Nimble
 @testable import TestApp
-import MockURLSession
+import Interceptor
 
 let nordstromURL = NSURL(string: "https://www.nordstrom.com")!
 let uberURL = NSURL(string: "https://www.uber.com")!
 let bestBuyURL = NSURL(string: "https://www.bestbuy.com")!
 
-extension TestAppSpec: MockURLSessionResponding {
+extension TestAppSpec: InterceptorResponding {
     func finalizeMockResponseValuesForRequest(initialValues: MockResponseValues) {
         switch initialValues.URL {
         case nordstromURL:
@@ -28,7 +28,8 @@ class TestAppSpec: QuickSpec {
 
         context("NSURLSession") {
             beforeEach {
-                MockURLSession.sharedInstance.dataSource = self
+                InterceptorSession.sharedInstance.active = true
+                InterceptorSession.sharedInstance.dataSource = self
                 networkModel = SillyNetworkModel()
                 networkModel.startURL(nordstromURL)
             }
