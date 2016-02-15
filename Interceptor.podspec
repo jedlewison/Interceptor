@@ -2,7 +2,8 @@ Pod::Spec.new do |s|
     s.name             = "Interceptor"
     s.version          = "0.0.1"
     s.summary          = "Intercept NSURLSessionDataTask requests and respond with mock data"
-    s.description      = "A mini-framework mocking network responses without changing any code inside the app being tested."
+    s.description      = "A mini-framework for mocking network responses without injecting mock service
+                            by intercepting NSURLSessionDataTasks and responding with mock data."
     s.author           = "Jed Lewison"
     s.homepage         = "https://github.com/jedlewison/Interceptor"
     s.license          = 'MIT'
