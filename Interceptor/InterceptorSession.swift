@@ -20,12 +20,12 @@ func synchronized<ReturnType>(lockToken: AnyObject, @noescape action: () -> Retu
 public protocol InterceptorResponding: class {
 
     /// Just before providing a mock response, the `InterceptorSession` calls
-    /// `finalizeMockResponseValuesForRequest:` with a `MockResponseValues` configured to default values.
+    /// `finalizeMockResponseValues(_:forRequest:)` with a `MockResponseValues` configured to default values.
     ///
     /// This is your opportunity to finalize the response, providing custom data, headers, status code, etc.
     /// You do this by setting `MockResponseValues` properties. `InterceptorSession` will then use these values to
     /// generate the appropriate NSURLResponse and NSData.
-    func finalizeMockResponseValuesForRequest(initialValues: MockResponseValues)
+    func finalizeMockResponseValues(initialValues: MockResponseValues, forRequest request: NSURLRequest)
 }
 
 /// `InterceptorSession` provides the mock responses for NSURLSessionDataTask requests and provides the
@@ -58,7 +58,7 @@ final public class InterceptorSession: NSObject {
     public func cachedResponseForDataTask(dataTask: NSURLSessionDataTask) -> NSCachedURLResponse? {
         guard let request = dataTask.originalRequest,
             mockResponseValues = MockResponseValues(request: request) else { return nil }
-        dataSource?.finalizeMockResponseValuesForRequest(mockResponseValues)
+        dataSource?.finalizeMockResponseValues(mockResponseValues, forRequest: request)
         return mockResponseValues.representedCachedURLResponse()
     }
     

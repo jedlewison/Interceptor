@@ -8,7 +8,7 @@ let uberURL = NSURL(string: "https://www.uber.com")!
 let bestBuyURL = NSURL(string: "https://www.bestbuy.com")!
 
 extension TestAppSpec: InterceptorResponding {
-    func finalizeMockResponseValuesForRequest(initialValues: MockResponseValues) {
+    func finalizeMockResponseValues(initialValues: MockResponseValues, forRequest request: NSURLRequest) {
         switch initialValues.URL {
         case nordstromURL:
             initialValues.setData(withString: "nordstrom response")

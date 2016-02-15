@@ -11,32 +11,24 @@ For example, here's how you might set up a test using Quick & Nimble:
 ```swift
 class TestAppSpec: QuickSpec {
     override func spec() {
-        var networkModel = SillyNetworkModel()
+        var networkModel = NetworkModel()
 
         context("NSURLSession") {
             beforeEach {
                 MockURLSession.sharedInstance.dataSource = self
-                networkModel = SillyNetworkModel()
                 networkModel.startURL(nordstromURL)
             }
-
-            it("should eventually get some data") {
-                expect(networkModel.requestResult).toEventuallyNot(beNil())
-            }
-
             it("the contents of the data should be the string 'nordstrom response'") {
                 expect(networkModel.requestResult).toEventually(equal("nordstrom response"))
             }
-            
         }
 ```
 
 And here's the dataSource implementation:
 
 ```swift
-extension TestAppSpec: MockURLSessionResponding {
-
-    func finalizeMockResponseValuesForRequest(initialValues: MockResponseValues) {
+extension TestAppSpec: InterceptorResponding {
+    func finalizeMockResponseValues(initialValues: MockResponseValues, forRequest request: NSURLRequest) {
         switch initialValues.URL {
         case nordstromURL:
             initialValues.setData(withString: "nordstrom response")
@@ -48,7 +40,6 @@ extension TestAppSpec: MockURLSessionResponding {
             break
         }
     }
-
 }
 ```
 
