@@ -6,20 +6,25 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - Interceptor (from `.`)
+  - Interceptor (from `https://github.com/jedlewison/Interceptor.git`)
   - Nimble
   - Quick
 
 EXTERNAL SOURCES:
   Interceptor:
-    :path: "."
+    :git: https://github.com/jedlewison/Interceptor.git
+
+CHECKOUT OPTIONS:
+  Interceptor:
+    :commit: 82154ab2d862d2adafe3cade1eaefc53da967e7e
+    :git: https://github.com/jedlewison/Interceptor.git
 
 SPEC CHECKSUMS:
   Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
-  Interceptor: 9bdced1d4a896941988de4f5be3609047030cb2a
+  Interceptor: 6b32a4814f7341b6cb4f857a47c7c8454b351824
   Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
 
-PODFILE CHECKSUM: 299f402bf47de4a2d31dc577f4f0a0d954efe65d
+PODFILE CHECKSUM: cd54249ad314a628a0263037081367862a7d39e0
 
 COCOAPODS: 1.0.0.beta.3

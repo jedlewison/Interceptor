@@ -3,10 +3,6 @@ platform :ios, '8.0'
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target 'Interceptor' do
-	
-end
-
 target 'InterceptorTests' do
 	pod 'Quick'
 	pod 'Nimble'
@@ -17,7 +13,7 @@ target 'TestApp' do
 end
 
 target 'TestAppTests' do
-    pod 'Interceptor', :path => '.'
+    pod 'Interceptor'
 	pod 'Quick'
 	pod 'Nimble'
 end
