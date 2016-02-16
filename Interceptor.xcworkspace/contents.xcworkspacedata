@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/jed/source/shared/Interceptor/Interceptor.xcodeproj">
+      location = "group:Interceptor.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Interceptor.xcodeproj">
    </FileRef>
 </Workspace>
